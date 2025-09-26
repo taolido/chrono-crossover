@@ -212,9 +212,14 @@ function App() {
                   <div 
                     key={key} 
                     className={`p-3 border rounded-lg cursor-pointer transition-colors ${
-                      selectedCharacter === key ? 'bg-blue-100 border-blue-500' : 'hover:bg-gray-50'
+                      selectedCharacter === key ? 'bg-blue-100 border-blue-500' : 
+                      char.atb >= char.maxAtb ? 'hover:bg-green-50 border-green-300' : 'hover:bg-gray-50'
                     }`}
-                    onClick={() => setSelectedCharacter(key)}
+                    onClick={() => {
+                      if (char.atb >= char.maxAtb) {
+                        setSelectedCharacter(key)
+                      }
+                    }}
                   >
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="font-bold">{char.name}</h3>
